@@ -11,7 +11,9 @@ const { apiLimiter } = require('./middleware/rateLimiters'); // Only use minimal
 dotenv.config();
 
 const app = express();
-
+app.get('/', (req, res) => {
+  res.send('Hello — Backend is running on Vercel!');
+});
 // Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
@@ -382,3 +384,4 @@ process.on('uncaughtException', (err) => {
 });
 
 module.exports = app;
+
